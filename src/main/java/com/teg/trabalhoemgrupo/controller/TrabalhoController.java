@@ -19,7 +19,7 @@ public class TrabalhoController {
 
 	@RequestMapping(value="/cadastraTrabalho", method=RequestMethod.GET)
 	public String form() {
-		return "page/formTrabalho";
+		return "page/formCadastroTrabalho";
 	}
 	
 	// REQUISIÇÃO POST PARA SALVAR NO BANCO DE DADOS
@@ -31,7 +31,7 @@ public class TrabalhoController {
 		return "redirect:/cadastraTrabalho";
 	}
 	
-	// REQUISIÇÃO POST PARA SALVAR NO BANCO DE DADOS
+	// REQUISIÇÃO POST PARA LISTAR NO BANCO DE DADOS
 	@RequestMapping("/trabalhos")
 	public ModelAndView listaTrabalhos() {
 		ModelAndView mv = new ModelAndView("page/index");

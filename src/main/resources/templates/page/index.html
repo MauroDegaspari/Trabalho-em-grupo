@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	 <head>
+		<title>Trabalho em Grupo	</title>
+	</head>
+	
+	<body>
+		<h1> LISTA DE TRABALHOS</h1>
+		<h3><a href="/cadastraTrabalho">Cadastra Trabalho</a></h3>	
+		
+		<div th:each="evento: ${trabalhos}">
+			<div class="row">
+			<p><span th:text="${evento.name}"></span></p>
+			<p><span th:text="${evento.local}"></span></p>
+			</div>		
+		</div>
+	</body>
+</html>

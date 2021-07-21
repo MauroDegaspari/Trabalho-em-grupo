@@ -14,12 +14,23 @@
 	</head>
 	<body>
 		<h1> Cadastro de Trabalho</h1>
-		<form method= "post">
+		<form  class="container" method= "post">
 			Nome:<input type="text" name="name"/>
-			Local:<input type="text" name="local"/>
-			Data:<input type="date" name="data"/>
-			Horario: <input type="text" name="hora"/>
+			<div class="row">
 			
+			<div class="input-field col s6">
+				Local:<input type="text" name="local"/>
+			</div>
+			
+			<div class="input-field col s3">
+				Data:<input type="date" name="data"/>
+			</div>
+				
+			<div class="input-field col s3">	
+			Horario: <input type="text" name="hora"/>
+			</div>
+			
+			</div>
 			<button type="submit"> Salvar</button>
 			<br>
 			<a href="/trabalhos"> trabalhos cadastrados</a>

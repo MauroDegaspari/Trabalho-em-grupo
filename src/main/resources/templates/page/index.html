@@ -28,7 +28,7 @@
 		
 	<h3><a href="/cadastraTrabalho" class="waves-effect waves-light btn"><i class="material-icons left">next_week</i>Cadastra trabalho</a></h3>
 		
-		<table>
+		<table class="container">
 		<thead>
 			<tr>
 				<th>nome</th>
@@ -39,10 +39,12 @@
 		</thead>
 		<tbody>
 			<tr th:each="evento: ${trabalhos}">
-				<td><span th:text="${evento.name}"></span></td>
+			
+				<td><a th:href="@{/detalhesTrabalho/{codigo}(codigo = ${evento.codigo}) }"><span th:text="${evento.name}"></span></a></td>
 				<td><span th:text="${evento.local}"></span></td>
 				<td><span th:text="${evento.data}"></span></td>
 				<td><span th:text="${evento.hora}"></span></td>
+				
 			</tr>		
 		
 		</tbody>

@@ -45,9 +45,8 @@ public class TrabalhoController {
 	@RequestMapping("/{codigo}")
 	public ModelAndView detalhes(@PathVariable("codigo") long codigo) {
 		TrabalhoModel evento = repo.findByCodigo(codigo);
-		ModelAndView mv = new ModelAndView("detalhesTrabalho");
-		mv.addObject("evento",evento);
-		System.out.println("evento" + evento);
+		ModelAndView mv = new ModelAndView("page/detalhes");
+		mv.addObject("evento", evento);
 		return mv;
 	}
 	

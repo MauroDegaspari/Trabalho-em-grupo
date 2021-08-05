@@ -8,6 +8,6 @@ public class AppController {
 
 	@RequestMapping("/teste")
 	public String App() {
-		return "index";
+		return "page/teste";
 	}
 }

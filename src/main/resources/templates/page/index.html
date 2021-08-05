@@ -31,16 +31,16 @@
 		<table class="container">
 		<thead>
 			<tr>
-				<th>nome</th>
-				<th>local</th>
-				<th>data</th>
-				<th>horario</th>
+				<th>Nome</th>
+				<th>Local</th>
+				<th>Data</th>
+				<th>Horario</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="evento: ${trabalhos}">
 			
-				<td><a th:href="@{/detalhesTrabalho/{codigo}(codigo = ${evento.codigo}) }"><span th:text="${evento.name}"></span></a></td>
+				<td><a th:href="${(#mvc.url('TC#detalhes').arg(0, evento.codigo)).build()}"><span th:text="${evento.name}"></span></a></td>
 				<td><span th:text="${evento.local}"></span></td>
 				<td><span th:text="${evento.data}"></span></td>
 				<td><span th:text="${evento.hora}"></span></td>

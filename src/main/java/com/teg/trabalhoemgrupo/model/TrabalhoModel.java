@@ -20,7 +20,7 @@ public class TrabalhoModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy =  GenerationType.SEQUENCE, generator = "seq_trabalho")
 	@Column(name="idtrabalho")
-	private long idTrabalho;
+	private long codigo;
 	
 	@Column(name="nome", nullable = true)
 	private String name;
@@ -30,11 +30,12 @@ public class TrabalhoModel implements Serializable{
 	private String data;
 	private String hora;
 	
-	public long getIdTrabalho() {
-		return idTrabalho;
+	
+	public long getCodigo() {
+		return codigo;
 	}
-	public void setIdTrabalho(long idTrabalho) {
-		this.idTrabalho = idTrabalho;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 	public String getName() {
 		return name;

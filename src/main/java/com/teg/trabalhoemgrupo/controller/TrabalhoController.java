@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,11 +42,13 @@ public class TrabalhoController {
 	}
 
 	//
-	@GetMapping("/{idTrabalho}")
-	public ModelAndView trabalhoId(@PathVariable("idTrabalho") long idTrabalho){
-		TrabalhoModel trabalhoModel = repo.acharId(idTrabalho);
-		ModelAndView mv = new ModelAndView("page/detalhesTrabalho");
-		mv.addObject("trabalho",trabalhoModel);
+	@RequestMapping("/{codigo}")
+	public ModelAndView detalhes(@PathVariable("codigo") long codigo) {
+		TrabalhoModel evento = repo.findByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("detalhesTrabalho");
+		mv.addObject("evento",evento);
+		System.out.println("evento" + evento);
 		return mv;
 	}
+	
 }

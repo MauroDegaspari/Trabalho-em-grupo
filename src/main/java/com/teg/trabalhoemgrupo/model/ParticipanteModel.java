@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="participante")
 @SequenceGenerator(name="seq_participante", sequenceName = "seq_participante", initialValue = 1, allocationSize = 1)
-public class ParticipanteModel {
+public class ParticipanteModel{
 
 	@Id
 	@GeneratedValue(strategy =  GenerationType.SEQUENCE, generator = "seq_participante")
@@ -23,6 +24,7 @@ public class ParticipanteModel {
 	private String celular;
 	
 	@ManyToOne
+	@JoinColumn(name = "idtrabalho")
 	private TrabalhoModel trabalho;
 
 	

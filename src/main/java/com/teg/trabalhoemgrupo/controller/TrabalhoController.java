@@ -61,7 +61,7 @@ public class TrabalhoController {
 		TrabalhoModel trabalho = repoTrabalho.findByCodigo(codigo);
 		participante.setTrabalho(trabalho);
 		repoParticipante.save(participante);
-		return "redrect:/{codigo}";
+		return "redirect:/{codigo}";
 }
 	
 }

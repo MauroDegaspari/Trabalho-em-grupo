@@ -1,6 +1,5 @@
 package com.teg.trabalhoemgrupo.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,7 +29,7 @@ public class TrabalhoModel {
 	private String data;
 	private String hora;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "trabalho")
 	private List<ParticipanteModel> participante;
 	
 	// Gettes & Settes

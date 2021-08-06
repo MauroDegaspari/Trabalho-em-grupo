@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	 <head>
+		<title>Participantes</title>
+		<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	
+	<body>  	
+		<h1> TRABALHO</h1>
+			<h3><a href="/trabalhos" class="waves-effect waves-light btn"><i class="material-icons left">next_week</i>Lista de trabalhos</a></h3>
+				<div th:each="teste : ${evento}" class="container">
+					<div class="row">
+						<p>Nome: <span th:text="${teste.name}"></span></p>
+						<p>Local: <span th:text="${teste.local}"></span></p>
+						<p>Data: <span th:text="${teste.data}"></span></p>
+						<p>Horario: <span th:text="${teste.hora}"></span></p>
+					</div>
+			
+			
+					
+					<form action="post">
+						Nome: <input type ="text" value="" name="nome"/>
+						 Numero para contato: <input type ="text" value="" name="celular"/>
+						<button class="waves-effect waves-light btn" type="submit"> Adicionar</button>
+					</form>
+				</div>	
+		<!--JavaScript-->
+      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</body>
+</html>

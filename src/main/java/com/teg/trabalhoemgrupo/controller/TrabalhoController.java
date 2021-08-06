@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.teg.trabalhoemgrupo.model.ParticipanteModel;
 import com.teg.trabalhoemgrupo.model.TrabalhoModel;
+import com.teg.trabalhoemgrupo.repository.ParticipanteRepository;
 import com.teg.trabalhoemgrupo.repository.TrabalhoRepository;
 
 @Controller
 public class TrabalhoController {
 	
 	@Autowired
-	private TrabalhoRepository repo;
+	private TrabalhoRepository repoTrabalho;
+	
+	@Autowired
+	private ParticipanteRepository repoParticipante;
 
 	@RequestMapping(value="/cadastraTrabalho", method=RequestMethod.GET)
 	public String form() {
@@ -27,7 +32,7 @@ public class TrabalhoController {
 	@RequestMapping(value="/cadastraTrabalho", method=RequestMethod.POST)
 	public String form(TrabalhoModel trabalho) {
 		
-		repo.save(trabalho);
+		repoTrabalho.save(trabalho);
 		
 		return "redirect:/cadastraTrabalho";
 	}
@@ -36,18 +41,27 @@ public class TrabalhoController {
 	@RequestMapping("/trabalhos")
 	public ModelAndView listaTrabalhos() {
 		ModelAndView mv = new ModelAndView("page/index");
-		List<TrabalhoModel> trabalhoModel = repo.findAll();
+		List<TrabalhoModel> trabalhoModel = repoTrabalho.findAll();
 		mv.addObject("trabalhos",trabalhoModel);
 		return mv;
 	}
 
 	//
-	@RequestMapping("/{codigo}")
+	@RequestMapping(value="/{codigo}", method=RequestMethod.GET)
 	public ModelAndView detalhes(@PathVariable("codigo") long codigo) {
-		TrabalhoModel evento = repo.findByCodigo(codigo);
-		ModelAndView mv = new ModelAndView("page/detalhes");
+		TrabalhoModel evento = repoTrabalho.findByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("page/formParticipante");
 		mv.addObject("evento", evento);
 		return mv;
 	}
+	
+	
+	@RequestMapping(value="/{codigo}", method=RequestMethod.POST)
+	public String participantes(@PathVariable("codigo") long codigo, ParticipanteModel participante) {
+		TrabalhoModel trabalho = repoTrabalho.findByCodigo(codigo);
+		participante.setTrabalho(trabalho);
+		repoParticipante.save(participante);
+		return "redrect:/{codigo}";
+}
 	
 }

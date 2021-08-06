@@ -15,10 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="trabalho")
 @SequenceGenerator(name="seq_trabalho", sequenceName = "seq_trabalho", initialValue = 1, allocationSize = 1)
-public class TrabalhoModel implements Serializable{
+public class TrabalhoModel {
 	
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy =  GenerationType.SEQUENCE, generator = "seq_trabalho")
 	@Column(name="idtrabalho")
